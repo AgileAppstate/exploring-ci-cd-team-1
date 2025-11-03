@@ -28,3 +28,13 @@ jobs:
         run: |
           mkdir -p out
           javac -d out $(find src -name "*.java")
+      
+      # 6. Run Checkstyle
+      - name: Run Checkstyle
+        run: |
+          java -jar checkstyle-12.1.1-all.jar -c checkstyle.xml src/ > checkstyle-report.txt || true
+          cat checkstyle-report.txt
+          if grep -q '\[ERROR\]' checkstyle-report.txt; then
+            echo "❌ Checkstyle violations found!"
+            exit 1
+          fi
