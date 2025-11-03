@@ -1,0 +1,43 @@
+# === Java build outputs ===
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# === Checkstyle ===
+# Ignore the downloaded Checkstyle JAR file
+checkstyle-*.jar
+
+# Ignore Checkstyle reports
+checkstyle-report.xml
+checkstyle-result.xml
+checkstyle.html
+checkstyle/
+
+# === IDEs ===
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# === Build tools (if you ever add them) ===
+target/
+build/
+bin/
+dist/
+
+# === OS-specific ===
+.DS_Store
+Thumbs.db
