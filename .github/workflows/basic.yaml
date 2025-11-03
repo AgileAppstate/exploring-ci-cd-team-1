@@ -1,0 +1,30 @@
+# Got from ChatGPT
+name: Java CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up JDK
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # 5. Compile Java sources
+      - name: Compile Java files
+        run: |
+          mkdir -p out
+          javac -d out $(find src -name "*.java")
