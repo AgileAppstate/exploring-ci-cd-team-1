@@ -42,7 +42,7 @@ jobs:
       # 5. Run Unit Test (HelloWorldTest.java)
       - name: Run HelloWorldTest
         run: |
-          java -cp out HelloWorldTest
+          java -cp out test.HelloWorldTest
 
       # 6. Run Bash Script (count words, lines, and bytes in a file)
       - name: Count in file
