@@ -23,13 +23,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # 5. Compile Java sources
+      # 3. Compile Java sources
       - name: Compile Java files
         run: |
           mkdir -p out
           javac -d out $(find src -name "*.java")
       
-      # 6. Run Checkstyle
+      # 4. Run Checkstyle
       - name: Run Checkstyle
         run: |
           java -jar checkstyle-12.1.1-all.jar -c checkstyle.xml src/ > checkstyle-report.txt || true
@@ -38,3 +38,13 @@ jobs:
             echo "❌ Checkstyle violations found!"
             exit 1
           fi
+
+      # 5. Run Unit Test (HelloWorldTest.java)
+      - name: Run HelloWorldTest
+        run: |
+          java -cp out HelloWorldTest
+
+      # 6. Run Bash Script (count words, lines, and bytes in a file)
+      - name: Count in file
+        run: |
+          bash -c 'wc src/HelloWorld.java'
